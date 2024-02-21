@@ -3,26 +3,26 @@ import { IReports } from "../Models/IReport";
 import { ISearchReportsRequest } from "../Models/ISearchReportsRequest";
 
 export class ReportService {
-  private static serverUrl: string = "http://localhost:8282/reports";
+  private static serverUrl: string = "http://localhost:8282";
 
   public static searchReports(
     request: ISearchReportsRequest
   ): Promise<IReports[]> {
-    const dataUrl: string = `${ReportService.serverUrl}/search`;
+    const dataUrl: string = `${ReportService.serverUrl}/searchresponse`;
     return axios
-      .get(dataUrl, { params: request })
+      .post(dataUrl, request) // Send a POST request with the request data
       .then((response: AxiosResponse<IReports[]>) => response.data);
   }
 
   public static getPlanNames(): Promise<string[]> {
-    const dataUrl: string = `${ReportService.serverUrl}/plan-names`;
+    const dataUrl: string = `${ReportService.serverUrl}/plannames`;
     return axios
       .get(dataUrl)
       .then((response: AxiosResponse<string[]>) => response.data);
   }
 
   public static getPlanStatus(): Promise<string[]> {
-    const dataUrl: string = `${ReportService.serverUrl}/plan-status`;
+    const dataUrl: string = `${ReportService.serverUrl}/planstatus`;
     return axios
       .get(dataUrl)
       .then((response: AxiosResponse<string[]>) => response.data);

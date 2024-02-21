@@ -17,7 +17,7 @@ const Report: React.FC = () => {
 
   const [searchResults, setSearchResults] = useState<IReports[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(3);
   useEffect(() => {
     const fetchPlanNames = () => {
       ReportService.getPlanNames()
